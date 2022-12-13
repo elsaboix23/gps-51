@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
+        python-version: ["3.10"]
 
     steps:
       - uses: actions/checkout@v3
@@ -27,4 +27,5 @@ jobs:
         continue-on-error: true
       - name: Test with pytest
         run: |
-          pytest test.py
+          pip install pytest-cov
+          pytest --cov=./ test.py
